@@ -1,14 +1,5 @@
-//building payload
-string payload = timestamp + "\n" + nonce + "\n" + body + "\n";
-
-//building
-string signature = hex(hmac("sha512", payload, secretKey)).toUpperCase()
-
-
-
 const app = document.getElementById('root');
 
-const logo = document.createElement('img');
 
 const container = document.createElement('div');
 container.setAttribute('class', 'container');
@@ -16,9 +7,22 @@ container.setAttribute('class', 'container');
 app.appendChild(logo);
 app.appendChild(container);
 
+
+
+//building payload
+string payload = timestamp + "\n" + nonce + "\n" + body + "\n";
+
+//building
+string signature = hex(hmac("sha512", payload, secretKey)).toUpperCase()
+
 var request = new XMLHttpRequest();
-request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
+request.open('POST', 'https://bpay.binanceapi.com/binancepay/openapi/certificates', true);
 request.onload = function () {
+
+
+//var request = new XMLHttpRequest();
+//request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
+//request.onload = function () {
 
   // Begin accessing JSON data here
   var data = JSON.parse(this.response);
