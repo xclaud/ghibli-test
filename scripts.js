@@ -1,7 +1,14 @@
+//building payload
+string payload = timestamp + "\n" + nonce + "\n" + body + "\n";
+
+//building
+string signature = hex(hmac("sha512", payload, secretKey)).toUpperCase()
+
+
+
 const app = document.getElementById('root');
 
 const logo = document.createElement('img');
-logo.src = 'logo.png';
 
 const container = document.createElement('div');
 container.setAttribute('class', 'container');
